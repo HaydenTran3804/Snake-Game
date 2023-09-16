@@ -3,13 +3,12 @@ using namespace std;
 #include "Snake_Snake.h"
 int dx[4] = {-1,1,0,0};
 int dy[4] = {0,0,1,-1};
-Snake :: Snake(int speed){
+Snake :: Snake(){
     srand(time(NULL));
     x = rand() % 48 + 1;
     y = rand() % 23 + 1;
     old_x = x;
     old_y = y;
-    this->speed = speed;
     body.push_back({y,x});
 }
 int Snake :: get_x(){
@@ -19,6 +18,7 @@ int Snake :: get_y(){
     return y;
 }
 void Snake :: move(char dir,Map mapp){
+	int speed = 1;
 	pair<int,int> head = body.front();
     old_x = x;
     old_y = y;
