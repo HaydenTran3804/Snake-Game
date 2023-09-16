@@ -5,6 +5,8 @@
 #include <conio.h>
 #include <windows.h>
 #include <cstdlib>
+#include <chrono>
+#include <thread>
 using namespace std;
 Map mapp;
 
@@ -34,8 +36,10 @@ void board(Snake snake,Food food){
 
 int main(){
 	int score = 0;
-	int speed = 1;
-	Snake snake(speed);
+	int level = 0;
+	cout << "Please choose level (hard (0) - medium (1) - easy (2)): ";
+	cin >> level;
+	Snake snake;
 	Food food(snake.get_y(),snake.get_x()); 
     char dir = 'h';
     while(true){
@@ -55,7 +59,8 @@ int main(){
 		snake.move(dir,mapp);
 	}
 	snake.grow(mapp,food,dir); 
-		SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),{0,0});
+		SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),{0,1});
+		this_thread::sleep_for(std::chrono::milliseconds(5 * level));
 
 }                          	  
 return 0;
