@@ -7,10 +7,10 @@ using namespace std;
 
 class Snake{
     private:
-    int x,y,old_x,old_y,speed;
+    int x,y,old_x,old_y;
     deque<pair<int,int>> body;
     public:
-    Snake(int speed);
+    Snake();
     int get_x();
     int get_y();
     void move(char dir,Map mapp);
